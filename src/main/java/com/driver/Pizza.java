@@ -33,7 +33,7 @@ public class Pizza {
         ischeeseused=false;
         istoppingused=false;
         istakeawaydone=false;
-        isbillgenerated=false;
+//        isbillgenerated=false;
         cheeseprice=80;
         bagprice=20;
         bill= "Base Price Of The Pizza: " + baseprice +"\n";
@@ -80,8 +80,8 @@ public class Pizza {
 
     public String getBill(){
         // your code goes here
-        if(!isbillgenerated){
-            isbillgenerated=true;
+//        if(!isbillgenerated){
+//            isbillgenerated=true;
             if(ischeeseused){
                 bill+= "Extra Cheese Added: " + cheeseprice + "\n";
             }
@@ -93,7 +93,7 @@ public class Pizza {
             }
             bill+= "Total Price: " + price + "\n";
 
-        }
+//        }
         return this.bill;
     }
 }
