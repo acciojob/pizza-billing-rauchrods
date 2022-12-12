@@ -82,17 +82,17 @@ public class Pizza {
 
     public String getBill(){
         // your code goes here
-        bill+="Price Of The Pizza:" + baseprice ;
+        bill+="Base Price Of The Pizza: " + baseprice ;
         if(ischeeseused){
-            bill+= "\nExtra Cheese Added:" + cheeseprice ;
+            bill+= "\nExtra Cheese Added: " + cheeseprice ;
         }
         if(istoppingused){
-            bill += "\nExtra Toppings Added:" + toppingsprice;
+            bill += "\nExtra Toppings Added: " + toppingsprice;
         }
         if(istakeawaydone){
-            bill+= "\nPaper bag Price:"  + bagprice;
+            bill+= "\nPaperbag Added: "  + bagprice;
         }
-        bill+= "\nTotal Price:" + price ;
+        bill+= "\nTotal Price: " + price ;
         return this.bill;
     }
 }
