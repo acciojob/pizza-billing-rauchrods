@@ -92,8 +92,8 @@ public class Pizza {
                 bill+= "\nPaperbag Added: "  + bagprice;
             }
             bill+= "\nTotal Price: " + price ;
-            return this.bill;
+
         }
-        return "Bill Already Generated";
+        return this.bill;
     }
 }
