@@ -6,25 +6,34 @@ public class Pizza {
     private Boolean isVeg;
     private String bill;
 
-    private boolean cheeseused;
-    private boolean toppingused;
-    private boolean takeawaydone;// my won var
+    private int baseprice;
+    private int cheeseprice;
+    private int toppingsprice;
+    private int bagprice;
+
+    private boolean ischeeseused;
+    private boolean istoppingused;
+    private boolean istakeawaydone;// my won var
+
 
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
         // your code goes here
           bill="";
         if(isVeg){
+            baseprice=300;
             price+=300;
-            bill+="Base Price Of The Pizza:300" ;
         }
         else{
+            baseprice=400;
             price+=400;
-            bill+="Base Price Of The Pizza:400" ;
         }
-        cheeseused=false;
-        toppingused=false;
-        takeawaydone=false;
+        ischeeseused=false;
+        istoppingused=false;
+        istakeawaydone=false;
+        cheeseprice=0;
+        toppingsprice=0;
+        bagprice=0;
     }
 
     public int getPrice(){
@@ -35,44 +44,54 @@ public class Pizza {
     public void addExtraCheese(){
         // your code goes here
 
-        if(cheeseused){
+        if(ischeeseused){
             return;
         }
+        cheeseprice=80;
         price+=80;
-       bill+= "\nExtra Cheese Added:80" ;
-       cheeseused=true;
+       ischeeseused=true;
     }
 
     public void addExtraToppings(){
         // your code goes here
 
-        if(toppingused){
+        if(istoppingused){
             return;
         }
         if(isVeg){
+            toppingsprice=70;
             price+=70;
-            bill += "\nExtra Toppings Added:70" ;
         }
         else{
+            toppingsprice=120;
             price+=120;
-            bill += "\nExtra Toppings Added:120" ;
         }
-        toppingused=true;
+        istoppingused=true;
     }
 
     public void addTakeaway(){
         // your code goes here
-        if(takeawaydone){
+        if(istakeawaydone){
             return;
         }
+        bagprice=20;
         price+=20;
-        bill+= "\nPaper bag Price:20" ;
-        takeawaydone=true;
+        istakeawaydone=true;
 
     }
 
     public String getBill(){
         // your code goes here
+        bill+="Base Price Of The Pizza:" + baseprice ;
+        if(ischeeseused){
+            bill+= "\nExtra Cheese Added:" + cheeseprice ;
+        }
+        if(istoppingused){
+            bill += "\nExtra Toppings Added:" + toppingsprice;
+        }
+        if(istakeawaydone){
+            bill+= "\nPaper bag Price:"  + bagprice;
+        }
         bill+= "\nTotal Price:" + price ;
         return this.bill;
     }
