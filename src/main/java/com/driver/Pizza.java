@@ -14,26 +14,29 @@ public class Pizza {
     private boolean ischeeseused;
     private boolean istoppingused;
     private boolean istakeawaydone;// my won var
+    private boolean isbillgenerated;
 
 
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
         // your code goes here
-          bill="";
         if(isVeg){
             baseprice=300;
-            price+=300;
+            price=300;
+            toppingsprice=70;
         }
         else{
             baseprice=400;
-            price+=400;
+            price=400;
+            toppingsprice=120;
         }
         ischeeseused=false;
         istoppingused=false;
         istakeawaydone=false;
-        cheeseprice=0;
-        toppingsprice=0;
-        bagprice=0;
+        isbillgenerated=false;
+        cheeseprice=80;
+        bagprice=20;
+        bill= "Base Price Of The Pizza: " + baseprice ;
     }
 
     public int getPrice(){
@@ -47,8 +50,7 @@ public class Pizza {
         if(ischeeseused){
             return;
         }
-        cheeseprice=80;
-        price+=80;
+        price+=cheeseprice;
        ischeeseused=true;
     }
 
@@ -59,12 +61,10 @@ public class Pizza {
             return;
         }
         if(isVeg){
-            toppingsprice=70;
-            price+=70;
+            price+=toppingsprice;
         }
         else{
-            toppingsprice=120;
-            price+=120;
+            price+=toppingsprice;
         }
         istoppingused=true;
     }
@@ -74,25 +74,26 @@ public class Pizza {
         if(istakeawaydone){
             return;
         }
-        bagprice=20;
-        price+=20;
+        price+=bagprice;
         istakeawaydone=true;
-
     }
 
     public String getBill(){
         // your code goes here
-        bill+="Base Price Of The Pizza: " + baseprice ;
-        if(ischeeseused){
-            bill+= "\nExtra Cheese Added: " + cheeseprice ;
+        if(!isbillgenerated){
+            isbillgenerated=true;
+            if(ischeeseused){
+                bill+= "\nExtra Cheese Added: " + cheeseprice ;
+            }
+            if(istoppingused){
+                bill += "\nExtra Toppings Added: " + toppingsprice;
+            }
+            if(istakeawaydone){
+                bill+= "\nPaperbag Added: "  + bagprice;
+            }
+            bill+= "\nTotal Price: " + price ;
+            return this.bill;
         }
-        if(istoppingused){
-            bill += "\nExtra Toppings Added: " + toppingsprice;
-        }
-        if(istakeawaydone){
-            bill+= "\nPaperbag Added: "  + bagprice;
-        }
-        bill+= "\nTotal Price: " + price ;
-        return this.bill;
+        return "Bill Already Generated";
     }
 }
